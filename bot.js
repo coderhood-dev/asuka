@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const Roll = require('roll')
 
 const { prefix, token } = require('./config.json');
+const { reaction } = require('./reaction.js');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -22,19 +23,23 @@ client.once('ready', () => {
 });
 
 client.on('message', message => {
-    if (!message.content.startsWith(prefix)) return;
-    const args = message.content.slice(prefix.length).trim().split(' ');
-    const command = args.shift().toLowerCase();
-    if (!client.commands.has(command)) {
-      message.reply(`ANTA BAKA! \n${command} not makes any sense for me!`);
-      return;
-    };
+    if (message.content.startsWith(prefix)) {
+      const args = message.content.slice(prefix.length).trim().split(' ');
+      const command = args.shift().toLowerCase();
+      if (!client.commands.has(command)) {
+        message.reply(`ANTA BAKA! \n${command} not makes any sense for me!`);
+        return;
+      };
 
-    try {
-        client.commands.get(command).execute(message, args, client, roll);
-    } catch (error) {
-        console.error(error);
-        message.reply(`there was an error trying to execute ${command} command!`);
+      try {
+          client.commands.get(command).execute(message, args, client, roll);
+      } catch (error) {
+          console.error(error);
+          message.reply(`there was an error trying to execute ${command} command!`);
+      } 
+    }
+    else {
+      reaction(message)
     }
 });
 
