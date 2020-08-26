@@ -1,7 +1,8 @@
 module.exports = {
 	name: 'roll',
-	description: 'Display a random element from.',
-	execute(message, args) {
-		message.channel.send(args[Math.floor(Math.random() * args.length)]);
+	description: 'Display a result element from.',
+	execute(message, args, client, roll) {
+        const attack = roll.roll(args[0])
+		message.channel.send(`Executed ${args[0]}\nResult:${attack.result}`);
 	},
 };
