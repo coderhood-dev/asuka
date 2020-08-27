@@ -1,4 +1,4 @@
 module.exports = {
-	prefix: "/botcoin",
+	prefix: "/asuka",
 	token: `${process.env.TOKEN}`,
 }
