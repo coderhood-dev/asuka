@@ -2,13 +2,13 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const Roll = require('roll')
 
-const { prefix, token } = require('./config.json');
+const { prefix, token } = require('./config.js');
 const { reaction } = require('./reaction.js');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
-roll = new Roll();
+const roll = new Roll();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
