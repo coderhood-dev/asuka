@@ -1,4 +1,5 @@
 const fs = require('fs');
+const express = require('express');
 const Discord = require('discord.js');
 const Roll = require('roll')
 
@@ -48,3 +49,16 @@ client.on('shardError', error => {
 });
 
 client.login(token);
+
+//////
+
+const app = express();
+
+app.get("/", (request, response) => {
+  console.log(Date.now() + " Ping Received");
+  response.sendStatus(200);
+});
+
+app.listen(process.env.PORT);
+
+console.log(`${Date.now()} Ready on port ${process.env.PORT}`);
