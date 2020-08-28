@@ -27,7 +27,7 @@ module.exports = {
     );
 
     const remindEndMsg = createEmbedMsg(
-      `Reminder for ${message.author.username}`,
+      `Reminder for @${message.author.username}`,
       remindText,
       `${parseInt(inputTime)} ${areMins ? "minute(s)" : "second(s)"} ago`
     );
