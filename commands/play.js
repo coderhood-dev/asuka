@@ -14,7 +14,7 @@ module.exports = {
                 const dispatcher = connection.play(url);
 
                 message.delete();
-                message.channel.send('Reproduciendo ahora: ' + args.join(' '));
+                message.channel.send('Playing now: ' + args.join(' '));
 
             }).catch(console.error);
     }
