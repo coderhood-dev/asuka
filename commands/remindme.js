@@ -40,8 +40,9 @@ module.exports = {
   name: "remindme",
   description: "Remind me in x time. e.g: remindme send email 3m",
   execute(message, args, client, Discord) {
-    const remindText = args.slice(0, -1).join(" ").toString();
-    const inputTime = args.length > 1 ? args[args.length - 1] : "5";
+    const textArgs = args.length > 1 ? args.slice(0, - 1) : args;
+    const remindText = textArgs.join(" ").toString();
+    const inputTime = args.length > 1 ? args[args.length - 1] : "5m";
     const remindTime = getTimeToRemind(inputTime);
 
     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
