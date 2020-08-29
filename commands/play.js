@@ -11,8 +11,7 @@ module.exports = {
         voice_channel.join()
             .then(connection => {
                 const url = ytdl(args.join(' '), { filter: 'audioonly' });
-                const dispatcher = connection.play(url);
-
+                cons
                 message.delete();
                 message.channel.send('Playing now: ' + args.join(' '));
 
