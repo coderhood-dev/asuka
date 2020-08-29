@@ -1,19 +1,28 @@
 var mongoose = require("mongoose");
 
 var ReminderSchema = new mongoose.Schema({
-  name: {
+  name: String,
+  room_id: String,
+  owner_id: {
     type: String,
     index: true
   },
-  equipped: Boolean,
-  owner_id: {
-    type: mongoose.Schema.Types.ObjectId,
+  schedule_date: {
+    type: Date,
     index: true
   },
-  room_id: {
-    type: mongoose.Schema.Types.ObjectId,
+  created_date: {
+    type: Date,
+    default: Date.now,
+  },
+  guild_id: {
+    type: String,
     index: true
-  }
+  },
+  title: String,
+  message: String,
+  footer: String,
+  sended: Boolean,
 });
 
 var Reminder = mongoose.model('Reminder', ReminderSchema);
