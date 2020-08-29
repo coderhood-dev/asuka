@@ -1,5 +1,5 @@
 module.exports = {
-	prefix: "asuka",
+	prefix: "/asuka",
 	token: `${process.env.TOKEN}`,
 	db_url: `${process.env.DB_URL}`,
 }
