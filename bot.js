@@ -109,7 +109,7 @@ console.log(`${Date.now()} Ready on port ${process.env.PORT}`);
 
 ////// Schedule for missing reminders
 
-cron.schedule("* * * * *", async () => {
+cron.schedule("*/5 * * * *", async () => {
   const events = await Reminder.find({
     sended: false,
     schedule_date: { $lt: new Date() },

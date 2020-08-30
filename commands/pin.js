@@ -37,14 +37,22 @@ module.exports = {
               $eq: message.channel.id,
             },
           });
-          items.map((item) => {
+          if (items.length === 0) {
             const embedMsg = new Discord.MessageEmbed()
               .setColor(`#${randomColor}`)
-              .setDescription(item.message)
-              .setFooter(`id: ${item.message_id}`);
+              .setDescription(`Not pinned messages on current channel`);
 
             message.channel.send(embedMsg);
-          });
+          } else {
+            items.map((item) => {
+              const embedMsg = new Discord.MessageEmbed()
+                .setColor(`#${randomColor}`)
+                .setDescription(item.message)
+                .setFooter(`id: ${item.message_id}`);
+
+              message.channel.send(embedMsg);
+            });
+          }
           break;
         case "delete":
           if (!args[1]) {
