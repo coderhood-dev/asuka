@@ -1,4 +1,4 @@
-var Reminder = require("../models/reminder").Reminder;
+const Reminder = require("../models/reminder").Reminder;
 
 const strTxt = [
   "B-Baka!",
@@ -41,7 +41,7 @@ const getTimeToRemind = (timeInput = "5") => {
 module.exports = {
   name: "remindme",
   description: "Remind me in x time. e.g: remindme send email 3m",
-  execute(message, args, {Discord}) {
+  execute(message, args, { Discord }) {
     const remindText = args.slice(0, -1).join(" ").toString();
     const inputTime = args.length > 1 ? args[args.length - 1] : "5";
     const remindTime = getTimeToRemind(inputTime);
@@ -72,7 +72,9 @@ module.exports = {
     message.channel.send(remindStart);
 
     const schedule_date = new Date();
-    schedule_date.setSeconds(schedule_date.getSeconds() + Math.floor(remindTime.ms / 1000));
+    schedule_date.setSeconds(
+      schedule_date.getSeconds() + Math.floor(remindTime.ms / 1000)
+    );
 
     const reminder = new Reminder({
       name: message.author.username,
@@ -100,6 +102,6 @@ module.exports = {
 
 function errorOnSave(err) {
   if (err) {
-    console.log(`${message.author} Error saving reminder :/`, {err})
+    console.log(`${message.author} Error saving reminder :/`, { err });
   }
 }
