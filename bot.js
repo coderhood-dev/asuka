@@ -73,7 +73,6 @@ client.on("messageReactionAdd", async (reaction, user) => {
   // When we receive a reaction we check if the reaction is partial or not
   const { identifier } = reaction.emoji;
   if (!client.reactions.has(identifier)) {
-    console.log("TEST", { identifier });
     //Early return if not reaction found
     return;
   }
