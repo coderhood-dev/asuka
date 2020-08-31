@@ -5,11 +5,11 @@ var ReminderSchema = new mongoose.Schema({
   room_id: String,
   owner_id: {
     type: String,
-    index: true
+    index: true,
   },
   schedule_date: {
     type: Date,
-    index: true
+    index: true,
   },
   created_date: {
     type: Date,
@@ -17,7 +17,7 @@ var ReminderSchema = new mongoose.Schema({
   },
   guild_id: {
     type: String,
-    index: true
+    index: true,
   },
   title: String,
   message: String,
@@ -25,8 +25,8 @@ var ReminderSchema = new mongoose.Schema({
   sended: Boolean,
 });
 
-var Reminder = mongoose.model('Reminder', ReminderSchema);
+var Reminder = mongoose.model("Reminder", ReminderSchema);
 
 module.exports = {
-  Reminder: Reminder
-}
+  Reminder: Reminder,
+};
