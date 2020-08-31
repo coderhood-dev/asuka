@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 module.exports = {
   name: "btc",
   description: "Display BTC price on USD.",
-  execute(message, args, client, Discord) {
+  execute(message, args, { Discord }) {
     (async () => {
       //Get the price of 10000 USD on Bitcoin
       const response = await fetch(

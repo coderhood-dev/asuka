@@ -71,9 +71,8 @@ client.on("message", (message) => {
 
 client.on("messageReactionAdd", async (reaction, user) => {
   // When we receive a reaction we check if the reaction is partial or not
-  const { identifier } = reaction.emoji;
-  if (!client.reactions.has(identifier)) {
-    console.log("TEST", { identifier });
+  const { name } = reaction.emoji;
+  if (!client.reactions.has(name)) {
     //Early return if not reaction found
     return;
   }
@@ -81,7 +80,7 @@ client.on("messageReactionAdd", async (reaction, user) => {
     // If the message this reaction belongs to was removed the fetching might result in an API error, which we need to handle
     try {
       await reaction.fetch();
-      client.reactions.get(identifier).execute(reaction, { client, Discord });
+      client.reactions.get(name).execute(reaction, { client, Discord });
     } catch (error) {
       console.log("Something went wrong when fetching the message: ", error);
       // Return as `reaction.message.author` may be undefined/null

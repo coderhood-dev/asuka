@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 var PinSchema = new mongoose.Schema({
   owner_id: {
     type: String,
-    index: true
+    index: true,
   },
   created_date: {
     type: Date,
@@ -11,26 +11,26 @@ var PinSchema = new mongoose.Schema({
   },
   guild_id: {
     type: String,
-    index: true
+    index: true,
   },
   channel_id: {
     type: String,
-    index: true
+    index: true,
   },
   message_id: {
     type: String,
-    index: true
+    index: true,
   },
   message: String,
   pinned: {
-      type: Boolean,
-      default: true,
-      index: true
+    type: Boolean,
+    default: true,
+    index: true,
   },
 });
 
-var Pin = mongoose.model('Pin', PinSchema);
+var Pin = mongoose.model("Pin", PinSchema);
 
 module.exports = {
-  Pin: Pin
-}
+  Pin: Pin,
+};
