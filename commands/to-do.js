@@ -24,18 +24,17 @@ module.exports = {
           } else {
             const groupedTasks = groupBy(tasks, "status");
             randomColor = Math.floor(Math.random() * 16777215).toString(16);
-            Object.keys(groupedTasks).map(status => {
+            Object.keys(groupedTasks).map((status) => {
               groupedTasks[status].map((task) => {
-              const embedMsg = new Discord.MessageEmbed()
-                .setColor(`#${randomColor}`)
-                .setTitle(task.name)
-                .setDescription(`status: ${status}`)
-                .setFooter(`last update: ${task.last_update}`);
+                const embedMsg = new Discord.MessageEmbed()
+                  .setColor(`#${randomColor}`)
+                  .setTitle(task.name)
+                  .setDescription(`status: ${status}`)
+                  .setFooter(`last update: ${task.last_update}`);
 
-              message.channel.send(embedMsg);
+                message.channel.send(embedMsg);
+              });
             });
-            })
-            
           }
           break;
         case "delete":
@@ -65,7 +64,7 @@ module.exports = {
             message.channel.send(embedMsg);
           });
           break;
-          case "set":
+        case "set":
           if (!args[1] || !args[2]) {
             message.reply(`there was an error trying to execute task command!`);
             return;
@@ -84,13 +83,13 @@ module.exports = {
           tasksToSet.map((task) => {
             task.status = args[1];
             task.last_update = new Date();
-            task.save();
+            task.save(errorOnSave);
             const embedMsg = new Discord.MessageEmbed()
               .setColor(`#${randomColor}`)
               .setTitle(taskName)
               .setDescription(`New status: ${args[1]}`)
-              .setFooter(`Last update: ${task.last_update}`)
-              
+              .setFooter(`Last update: ${task.last_update}`);
+
             message.channel.send(embedMsg);
           });
           break;
@@ -110,14 +109,14 @@ module.exports = {
                   channel_id: message.channel.id,
                   name: taskName,
                 });
-                
+               
+                newTask.save(errorOnSave);
                 const embedMsg = new Discord.MessageEmbed()
-                .setColor(`#${randomColor}`)
-                .setTitle(`Task created: ${taskName}`)
-                
-              message.channel.send(embedMsg);
-             };
-            
+                  .setColor(`#${randomColor}`)
+                  .setTitle(taskName)
+
+                message.channel.send(embedMsg);
+              }
             }
           );
           break;
