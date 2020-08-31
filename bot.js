@@ -74,11 +74,13 @@ client.on("messageReactionAdd", async (reaction, user) => {
   const { name } = reaction.emoji;
   if (!client.reactions.has(name)) {
     //Early return if not reaction found
+    console.log(`${name} reaction not found`);
     return;
   }
   if (reaction.partial) {
     // If the message this reaction belongs to was removed the fetching might result in an API error, which we need to handle
     try {
+      console.log(`${name} reaction found`);
       await reaction.fetch();
       client.reactions.get(name).execute(reaction, { client, Discord });
     } catch (error) {
