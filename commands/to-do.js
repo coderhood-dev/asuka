@@ -1,11 +1,19 @@
 const Task = require("../models/task").Task;
 
+const strTxt = [
+  "B-Baka!",
+  "ANTA BAKA!",
+  "If I feel like it, AHO!",
+  "God, you are so useless!",
+];
+
 module.exports = {
   name: "to-do",
   description: "task manager",
   execute(message, args, { Discord }) {
     (async () => {
       let taskName;
+      let randomStrText = strTxt[Math.floor(Math.random() * strTxt.length)];
       let randomColor = Math.floor(Math.random() * 16777215).toString(16);
       switch (args[0]) {
         case "list":
@@ -109,11 +117,12 @@ module.exports = {
                   channel_id: message.channel.id,
                   name: taskName,
                 });
-               
+
                 newTask.save(errorOnSave);
                 const embedMsg = new Discord.MessageEmbed()
                   .setColor(`#${randomColor}`)
                   .setTitle(taskName)
+                  .setFooter(`- ${randomStrText}`);
 
                 message.channel.send(embedMsg);
               }
