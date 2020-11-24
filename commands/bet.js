@@ -1,9 +1,11 @@
 const fetch = require("node-fetch");
 
+const CMC_TOKEN = process.env.CMC_TOKEN
+
 module.exports = {
-  name: "btc",
-  description: "Display BTC price on USD.",
-  execute(message, __args, { Discord }) {
+  name: "bet",
+  description: "Bet coin",
+  execute(message, args, { Discord }) {
     (async () => {
       //Get the price of 10000 USD on Bitcoin
       const response = await fetch(
