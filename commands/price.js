@@ -18,7 +18,7 @@ module.exports = {
 
       const embedMessage = new Discord.MessageEmbed()
         .setColor(percent_change_24h > 0 ? "#00C075" : "#FC6C7C")
-        .setTitle(`${json.data[symbol].name}: ${(json.data[symbol].quote.USD.price).toFixed(2)} USD`)
+        .setTitle(`${json.data[symbol].name}: ${(json.data[symbol].quote.USD.price).toFixed(3)} USD`)
         .setDescription(`24h Change: ${(percent_change_24h).toFixed(2)}%`);
 
       message.channel.send(embedMessage);
