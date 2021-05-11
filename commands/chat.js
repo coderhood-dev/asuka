@@ -27,7 +27,7 @@ const story = {};
 
 const addMSG = (msg, channelID) => {
   if (story[channelID] !== undefined) {
-    if (story[channelID].length < 10) {
+    if (story[channelID].length < 30) {
       story[channelID].push(msg);
     } else {
       story[channelID] = [...story[channelID].slice(1), msg];
