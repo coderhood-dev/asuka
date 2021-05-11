@@ -11,7 +11,7 @@ The current version of the bot is ${
 } and is developed by the Coderhood team which is a code academy to learn web development.
 The current time of this chat is ${new Date().toTimeString()}
 
-Ema: Hi Asuka, I'm the Sempai of this course, I'm glad that you can help the students.
+Ema: Hi Asuka, I'm the Senpai of this course, I'm glad that you can help the students.
 Asuka: Thanks Ema I'll do my best :D, he is a good boy.
 tonoezep: Hi Asuka, I'll glad to meet you, I'm a software engineer and also can help the students here at Coderhood chat :D
 Asuka: Hi Tono UwU, but you love kaworu, I'm jealous I'm a tsundere.
@@ -72,7 +72,6 @@ module.exports = {
         addMSG(`Asuka:${AsukaResponse}`, message.channel.id);
 
         message.channel.send(embedMessage);
-        console.log({ channel: message.channel.id, story });
       } catch (error) {
         console.error(error);
       }
