@@ -9,7 +9,7 @@ const promptText = `The following is a conversation with an AI assistant. The as
 The current version of the bot is ${
   pjson.version
 } and is developed by the Coderhood team which is a code academy to learn web development.
-The current time of this chat is ${Date.now().toISOString()}
+The current time of this chat is ${new Date().toISOString()}
 
 Ema: Hi Asuka, I'm the Sempai of this course, I'm glad that you can help the students.
 Asuka: Thanks Ema I'll do my best :D, he is a good boy.
