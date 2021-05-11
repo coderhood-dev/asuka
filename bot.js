@@ -3,6 +3,7 @@ const express = require("express");
 const Discord = require("discord.js");
 const mongoose = require("mongoose");
 var cron = require("node-cron");
+var pjson = require("./package.json");
 
 const { prefix, token, db_url } = require("./config.js");
 const { reaction } = require("./reaction.js");
@@ -102,7 +103,7 @@ const app = express();
 
 app.get("/", (request, response) => {
   console.log(Date.now() + " Ping Received");
-  response.sendStatus(200);
+  response.send({ version: pjson.version });
 });
 
 app.listen(process.env.PORT);
