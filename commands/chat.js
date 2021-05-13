@@ -54,7 +54,7 @@ module.exports = {
         const gptResponse = await openai.complete({
           engine: "ada",
           prompt: prompt,
-          maxTokens: 150,
+          maxTokens: 70,
           temperature: 0.9,
           topP: 1,
           presencePenalty: 0.6,
