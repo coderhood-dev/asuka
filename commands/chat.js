@@ -52,7 +52,7 @@ module.exports = {
       )}\nAsuka:`;
       try {
         const gptResponse = await openai.complete({
-          engine: "ada",
+          engine: "babbage",
           prompt: prompt,
           maxTokens: 70,
           temperature: 0.9,
